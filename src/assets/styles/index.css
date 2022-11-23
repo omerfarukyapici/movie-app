@@ -93,19 +93,6 @@ code {
     text-decoration: none;
 }
 
-
-.Mobile-links {
-    position: absolute;
-    right: 0;
-    width: 300px;
-    background-color: red;
-}
-
-.Mobile-links a {
-    padding: 1rem;
-    text-decoration: none;
-}
-
 .Navbar-mobile {
     width: 3rem;
     height: 3rem;
@@ -674,7 +661,6 @@ code {
 
     .Img-parent {
         position: relative;
-        background: red;
         width: 188px;
         height: 367px;
         border-radius: 6px 0px 4px 4px;
@@ -722,7 +708,6 @@ code {
 
     .Img-parent {
         position: relative;
-        background: red;
         width: 168px;
         /* 20px */
         height: 347px;
@@ -802,7 +787,6 @@ code {
 
     .Img-parent {
         position: relative;
-        background: red;
         width: 158px;
         /* 10px */
         height: 337px;
