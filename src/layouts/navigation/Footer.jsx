@@ -10,8 +10,8 @@ const Footer = () => {
                     </Link>
                 </div>
                 <div className="Footer-links">
-                    <a target="_blank" href="https://www.linkedin.com/in/%C3%B6mer-faruk-yap%C4%B1c%C4%B1-57b5b11b6/">Linkedin</a>
-                    <a target="_blank" href="https://github.com/omerfarukyapici">Github</a>
+                    <a href="https://www.linkedin.com/in/%C3%B6mer-faruk-yap%C4%B1c%C4%B1-57b5b11b6/">Linkedin</a>
+                    <a href="https://github.com/omerfarukyapici">Github</a>
                 </div>
             </div>
         </div>
