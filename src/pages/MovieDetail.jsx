@@ -78,7 +78,7 @@ const MovieDetail = (props) => {
             <div>
                 <div className="Cast-section-parent">
                     <div className="Cast-content">
-                        <h2>Serie Cast</h2>
+                        <h2>Movie Cast</h2>
                         <div className="Cast-content">
                             {
                                 movieDetail && <>
