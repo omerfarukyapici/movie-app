@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getPosterUrl, toTop } from "../utils";
-import { Card } from "../components/card";
+import { MovieCard } from "../components/MovieCard";
+import { CastCard } from "../components/CastCard";
 import useFetch from "../hooks/useFetch";
 
 const MovieDetail = (props) => {
@@ -13,11 +14,11 @@ const MovieDetail = (props) => {
     let { id } = useParams();
     const { movieDetail, movieGenre, movieCompanie } = useFetch(`movie/${id}`);
     const { movieCast } = useFetch(`movie/${id}/credits`);
-    const { movie } = useFetch("movie/popular");
+    const { movieSimilar } = useFetch(`movie/${id}/similar`)
+
 
     return (
         <>
-
             <div>
                 {
                     movieDetail && <>
@@ -26,6 +27,7 @@ const MovieDetail = (props) => {
                             <div className="Content">
                                 <div className="Content-img">
                                     <img src={getPosterUrl(movieDetail.backdrop_path)} alt="img" />
+                                    <div className="Content-detail-rectangle"></div>
                                 </div>
                                 <div className="Content-info">
                                     <div>
@@ -35,10 +37,9 @@ const MovieDetail = (props) => {
                                             <h2>Overview</h2>
                                             <p>{movieDetail.overview}</p>
                                         </div>
-                                        <div className="Content-vote-average">{movieDetail.vote_average}</div>                                
-                                        <div>
-                                            <div>
-
+                                        <div className="Content-genre-companie-parent">
+                                            <div className="Content-genre-companie-child">
+                                                <h3>Genres</h3>
                                                 {
                                                     movieGenre && <>
                                                         {
@@ -48,12 +49,9 @@ const MovieDetail = (props) => {
                                                         }
                                                     </>
                                                 }
-
                                             </div>
-                                        </div>
-                                        <div>
-                                            <div>
-
+                                            <div className="Content-genre-companie-child">
+                                                <h3>Companies</h3>
                                                 {
                                                     movieCompanie && <>
                                                         {
@@ -63,56 +61,69 @@ const MovieDetail = (props) => {
                                                         }
                                                     </>
                                                 }
-
+                                            </div>
+                                            <div className="Content-genre-companie-child">
+                                                <h3 className="Vote-Title">Vote Average</h3>
+                                                <div className="Content-vote-average">{movieDetail.vote_average}</div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        
                     </>
                 }
             </div>
 
             <div>
-                {
-                    movieDetail && <>
-                        {
-                            movieCast && <>
-                                {
-                                    movieCast.map(cast => (
-                                        <div key={cast.id}>
-                                            <div>{cast.name}</div>
-                                        </div>
-                                    ))
-                                }
-                            </>
-                        }
-                    </>
-                }
+                <div className="Cast-section-parent">
+                    <div className="Cast-content">
+                        <h2>Serie Cast</h2>
+                        <div className="Cast-content">
+                            {
+                                movieDetail && <>
+                                    {
+                                        movieCast && <>
+                                            {
+                                                movieCast.map(cast => (
+                                                    <CastCard
+                                                        key={cast.id}
+                                                        posterPath={cast.profile_path}
+                                                        character={cast.character}
+                                                        original_name={cast.original_name}
+                                                    />
+                                                )).slice(0, 7)
+                                            }
+                                        </>
+                                    }
+                                </>
+                            }
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div className="Home-content-parent">
                 <div className="Home-content">
-
                     <div className="Movie-content">
                         <div className="Content-title">
-                            <h1>Other Movies</h1>
+                            <h1>Similar Movies</h1>
                         </div>
                         <div className="Movies">
 
                             {
-                                movie && <>
+                                movieSimilar && <>
                                     {
-                                        movie.map(movie => (
-                                            <Card
+                                        movieSimilar.map(movie => (
+
+                                            <MovieCard
                                                 key={movie.id}
                                                 MovieTitle={movie.original_title}
                                                 MovieRank={movie.vote_average}
                                                 posterPath={movie.backdrop_path}
                                                 Movie={movie.id}
                                                 Type={"movie"}
+                                                RankStyle={"Img-popularity Rank-bg"}
                                             />
                                         )).slice(15, 20)
                                     }
@@ -121,10 +132,8 @@ const MovieDetail = (props) => {
 
                         </div>
                     </div>
-
                 </div>
             </div>
-
         </>
     )
 };

@@ -1,4 +1,4 @@
-import { Card } from "../components/card";
+import { MovieCard } from "../components/MovieCard";
 import { useEffect } from "react";
 import { toTop } from "../utils";
 import useFetch from "../hooks/useFetch";
@@ -27,13 +27,14 @@ const Home = () => {
                                 movie && <>
                                     {
                                         movie.map(movie => (
-                                            <Card
+                                            <MovieCard
                                                 key={movie.id}
                                                 MovieTitle={movie.original_title}
                                                 MovieRank={movie.vote_average}
                                                 posterPath={movie.backdrop_path}
                                                 Movie={movie.id}
                                                 Type={"movie"}
+                                                RankStyle={"Img-popularity Rank-bg"}
                                             />
                                         )).slice(0, 4)
                                     }
@@ -53,13 +54,14 @@ const Home = () => {
                                 serie && <>
                                     {
                                         serie.map(serie => (
-                                            <Card
+                                            <MovieCard
                                                 key={serie.id}
                                                 MovieTitle={serie.name}
                                                 MovieRank={serie.vote_average}
                                                 posterPath={serie.backdrop_path}
                                                 Movie={serie.id}
                                                 Type={"serie"}
+                                                RankStyle={"Img-popularity Rank-bg"}
                                             />
                                         )).slice(0, 4)
                                     }

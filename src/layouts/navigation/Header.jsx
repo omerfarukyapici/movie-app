@@ -1,4 +1,4 @@
-import { Card } from "../../components/card";
+import { MovieCard } from "../../components/MovieCard";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
@@ -75,13 +75,14 @@ const Header = () => {
                             serie && <>
                                 {
                                     serie.map(serie => (
-                                        <Card
+                                        <MovieCard
                                             key={serie.id}
                                             MovieTitle={serie.name}
                                             MovieRank={serie.vote_average}
                                             posterPath={serie.backdrop_path}
                                             Movie={serie.id}
                                             Type={"serie"}
+                                            RankStyle={"Img-popularity"}
                                         />
                                     )).slice(-1)
                                 }
@@ -97,13 +98,14 @@ const Header = () => {
                             movie && <>
                                 {
                                     movie.map(movie => (
-                                        <Card
+                                        <MovieCard
                                             key={movie.id}
                                             MovieTitle={movie.original_title}
                                             MovieRank={movie.vote_average}
                                             posterPath={movie.backdrop_path}
                                             Movie={movie.id}
                                             Type={"movie"}
+                                            RankStyle={"Img-popularity"}
                                         />
                                     )).slice(0, 1)
                                 }

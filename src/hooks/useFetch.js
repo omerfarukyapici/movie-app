@@ -18,6 +18,9 @@ export default function useFetch(url) {
     const [movieCast, setMovieCast] = useState(null);
     const [serieCast, setSerieCast] = useState(null);
 
+    const [movieSimilar, setMovieSimilar] = useState(null);
+    const [serieSimilar, setSerieSimilar] = useState(null);
+
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
 
@@ -45,6 +48,9 @@ export default function useFetch(url) {
                     setMovieCast(data.cast);
                     setSerieCast(data.cast);
 
+                    setMovieSimilar(data.results)
+                    setSerieSimilar(data.results)
+
                 } catch (err) {
                     setError(err)
                 } finally {
@@ -62,13 +68,16 @@ export default function useFetch(url) {
 
         movieGenre,
         serieGenre,
-        
+
         movieCompanie,
         serieCompanie,
 
         movieCast,
         serieCast,
-        
+
+        movieSimilar,
+        serieSimilar,
+
         error,
         loading
     }

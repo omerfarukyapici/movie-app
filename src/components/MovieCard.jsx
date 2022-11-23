@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import { getPosterUrl } from "../utils";
 
-export const Card = ({ MovieTitle, MovieRank, posterPath, Movie, Type }) => {
+export const MovieCard = ({ MovieTitle, MovieRank, posterPath, Movie, Type, RankStyle }) => {
     return (
         <div className="Card-parent">
-            <div className="Img-popularity">{MovieRank} / 10</div>
+            <div className={RankStyle}>{MovieRank} / 10</div>
             <Link to={`/${Type}/${Movie}`} >
                 <div className="Img-parent">
                     <img className="Img-movie" src={getPosterUrl(posterPath)} alt="" />

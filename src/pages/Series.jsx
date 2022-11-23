@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Card } from "../components/card";
+import { MovieCard } from "../components/MovieCard";
 import { toTop } from "../utils";
 import useFetch from "../hooks/useFetch";
 
@@ -26,15 +26,16 @@ const Series = () => {
                                 serie && <>
                                     {
                                         serie.map(serie => (
-                                            <Card
+                                            <MovieCard
                                                 key={serie.id}
                                                 MovieTitle={serie.name}
                                                 MovieRank={serie.vote_average}
                                                 posterPath={serie.backdrop_path}
                                                 Movie={serie.id}
                                                 Type={"serie"}
+                                                RankStyle={"Img-popularity Rank-bg"}
                                             />
-                                        )).slice(10, 20)
+                                        ))
                                     }
                                 </>
                             }

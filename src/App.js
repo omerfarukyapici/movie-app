@@ -23,7 +23,7 @@ const App = () => {
           <Route path='/serie/:id' element={<SeriesDetail />} />
         </Route>
       </Routes>
-    </HashRouter >
+    </HashRouter>
   );
 }
 
